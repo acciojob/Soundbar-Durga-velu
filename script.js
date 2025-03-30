@@ -13,16 +13,15 @@ buttons.forEach((btn)=>{
         if(soundAudio){
      soundAudio.pause()
      soundAudio.currentTime = 0;
-
-        }
-        soundAudio=new Audio(btn.getAttribute("data-sound"))
-
-        soundAudio.play();
-console.log(soundAudio)
-    })
-
-  
+		}
+         soundAudio = new Audio(btn.getAttribute("data-sound"));
+    soundAudio.play().catch((error) => {
+      alert("Enable sound autoplay in your browser.");
+    });
+  });
 })
+  
+
 
 
 stop.addEventListener("click",()=>{
