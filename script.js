@@ -18,7 +18,7 @@ buttons.forEach((btn)=>{
         soundAudio=new Audio(btn.getAttribute("data-sound"))
 
         soundAudio.play();
-
+console.log(soundAudio)
     })
 
   
