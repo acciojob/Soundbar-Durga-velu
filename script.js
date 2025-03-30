@@ -6,24 +6,29 @@ let buttons=document.querySelectorAll(".btn")
 let stop=document.querySelector(".stop")
 let soundAudio=null
 
-buttons.forEach((btn)=>{
+buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        // Stop and remove existing audio
+        if (soundAudio) {
+            soundAudio.pause();
+            soundAudio.currentTime = 0;
+            soundAudio.remove(); // Remove from DOM
+        }
 
-    btn.addEventListener("click",()=>{
+        // Create an audio element in the DOM
+        soundAudio = document.createElement("audio");
+        soundAudio.src = btn.getAttribute("data-sound");
+        soundAudio.id = "dynamic-audio"; // ID for Cypress detection
+        document.body.appendChild(soundAudio);
 
-        if(soundAudio){
-     soundAudio.pause()
-     soundAudio.currentTime = 0;
-		}
-         soundAudio = new Audio(btn.getAttribute("data-sound"));
-    soundAudio.play().catch((error) => {
-      alert("Enable sound autoplay in your browser.");
+        // Play the audio
+        soundAudio.play().catch((error) => {
+            console.error("Audio playback failed:", error);
+        });
+
+
+		     });
     });
-  });
-})
-  
-
-
-
 stop.addEventListener("click",()=>{
 
 if(soundAudio){
