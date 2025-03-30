@@ -17,7 +17,7 @@ buttons.forEach((btn)=>{
         }
         soundAudio=new Audio(btn.getAttribute("data-sound"))
 
-        soundAudio.play()
+        soundAudio.play();
 
     })
 
@@ -34,11 +34,6 @@ if(soundAudio){
 
 
 })
-
-
-
-
-
 
 
 
